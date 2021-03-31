@@ -26,6 +26,12 @@ const Nav: React.FC = () => {
 				Menu
 			</StyledLink>
 			<StyledAbsoluteLink
+				href="https://alpha.baoswap.xyz/#/swap"
+				target="_blank"
+			>
+				Swap
+			</StyledAbsoluteLink
+			<StyledAbsoluteLink
 				href="https://snapshot.page/#/baovotes.eth"
 				target="_blank"
 			>
