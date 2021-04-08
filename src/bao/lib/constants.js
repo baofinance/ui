@@ -3330,7 +3330,7 @@ export const supportedPools = [
 			1: '0xbc3ec4e491b835dce394a53e9a9a10ac19564839',
 		},
 		tokenDecimals: 18,
-		name: 'Starbugs Bug Protien',
+		name: 'Starbugs Bug Protein',
 		symbol: 'BUGS-ETH UNIV2',
 		tokenSymbol: 'BUGS',
 		icon: '/starbugs.png',
