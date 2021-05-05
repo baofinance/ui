@@ -86,3 +86,4 @@ export class Bao {
 		return BigNumber(a)
 	}
 }
+Bao.web3 = undefined

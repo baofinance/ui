@@ -16,9 +16,10 @@ import useBlock from './useBlock'
 
 export interface StakedValue {
   tokenAmount: BigNumber
-  wethAmount: BigNumber
+  denominatorAmount: BigNumber
+  denominatorWethEquivalent: BigNumber
   totalWethValue: BigNumber
-  tokenPriceInWeth: BigNumber
+  tokenPriceInDenominator: BigNumber
   poolWeight: BigNumber
 }
 
@@ -32,38 +33,48 @@ const useAllStakedValue = () => {
   const block = useBlock()
 
   const fetchAllStakedValue = useCallback(async () => {
-    const balances: Array<StakedValue> = await Promise.all(
-      farms.map(
-        ({
-          pid,
+    const batchRequest = new bao.web3.BatchRequest()
+
+    const balancePromises = farms.map(
+      ({
+        pid,
+        lpContract,
+        tokenContract,
+        denominatorContract,
+        tokenDecimals,
+        mainnetDenominatorAddress,
+      }: {
+        pid: number
+        mainnetDenominatorAddress: string | null
+        lpContract: Contract
+        tokenContract: Contract
+        denominatorContract: Contract
+        tokenDecimals: number
+      }) =>
+        getTotalLPWethValue(
+          masterChefContract,
           lpContract,
           tokenContract,
+          denominatorContract,
+          mainnetDenominatorAddress,
           tokenDecimals,
-        }: {
-          pid: number
-          lpContract: Contract
-          tokenContract: Contract
-          tokenDecimals: number
-        }) =>
-          getTotalLPWethValue(
-            masterChefContract,
-            wethContract,
-            lpContract,
-            tokenContract,
-            tokenDecimals,
-            pid,
-          ),
-      ),
+          pid,
+          batchRequest,
+        ),
     )
 
+    batchRequest.execute()
+
+    const balances: Array<StakedValue> = await Promise.all(balancePromises)
+
     setBalance(balances)
-  }, [account, masterChefContract, bao])
+  }, [account, masterChefContract, bao, block])
 
   useEffect(() => {
     if (account && masterChefContract && bao) {
       fetchAllStakedValue()
     }
-  }, [account, block, masterChefContract, setBalance, bao])
+  }, [account, masterChefContract, setBalance, bao])
 
   return balances
 }

@@ -331,10 +331,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x374cb8c27130e2c9e04f44303f3c8351b9de61c1',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 18,
 		name: 'Bao/USDC',
 		symbol: 'BAO-USDC SLP',
 		tokenSymbol: 'BAO',
+		denominatorSymbol: 'USDC',
 		poolType: 'sushi',
 		icon: '/bao.png',
 		refUrl:
@@ -348,10 +352,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x374cb8c27130e2c9e04f44303f3c8351b9de61c1',
 		},
+		denominatorAddresses: {
+			1: '0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e',
+		},
 		tokenDecimals: 18,
 		name: 'Bao/YFI',
 		symbol: 'BAO-YFI SLP',
 		tokenSymbol: 'BAO',
+		denominatorSymbol: 'YFI',
 		poolType: 'sushi',
 		icon: '/bao.png',
 		refUrl:
@@ -365,10 +373,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x374cb8c27130e2c9e04f44303f3c8351b9de61c1',
 		},
+		denominatorAddresses: {
+			1: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
+		},
 		tokenDecimals: 18,
 		name: 'Bao/Sushi',
 		symbol: 'BAO-SUSHI SLP',
 		tokenSymbol: 'BAO',
+		denominatorSymbol: 'SUSHI',
 		poolType: 'sushi',
 		icon: '/bao.png',
 		refUrl:
@@ -382,10 +394,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x374cb8c27130e2c9e04f44303f3c8351b9de61c1',
 		},
+		denominatorAddresses: {
+			1: '0x6b175474e89094c44da98b954eedeac495271d0f',
+		},
 		tokenDecimals: 18,
 		name: 'Bao/Dai',
 		symbol: 'BAO-DAI SLP',
 		tokenSymbol: 'BAO',
+		denominatorSymbol: 'DAI',
 		poolType: 'sushi',
 		icon: '/bao.png',
 		refUrl:
@@ -416,10 +432,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
 		},
+		denominatorAddresses: {
+			1: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
+		},
 		tokenDecimals: 18,
 		name: 'Sushi Boat',
 		symbol: 'Sushi-xSushi SLP',
 		tokenSymbol: 'SUSHI',
+		denominatorSymbol: 'xSUSHI',
 		poolType: 'sushi',
 		icon: '/simplysushi.png',
 		refUrl:
@@ -1108,10 +1128,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x36f3fd68e7325a35eb768f1aedaae9ea0689d723',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 18,
 		name: 'Empty Set Dollar Empty Bowl',
 		symbol: 'ESD-USDC UNIV2',
 		tokenSymbol: 'ESD',
+		denominatorSymbol: 'USDC',
 		icon: '/bowl.png',
 		refUrl: 'https://bilaxy.com/user/register?intro=1428882',
 	},
@@ -1245,10 +1269,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x039B5649A59967e3e936D7471f9c3700100Ee1ab',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 6,
 		name: 'wFIL/USDC Flaming Crab',
 		symbol: 'wFIL-USDC BAO',
 		tokenSymbol: 'wFIL',
+		denominatorSymbol: 'USDC',
 		poolType: 'archived',
 		icon: '/crab.png',
 		refUrl:
@@ -1645,10 +1673,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x4a64515e5e1d1073e83f30cb97bed20400b66e10',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 18,
 		name: '(w)ZEC Zhaziji',
 		symbol: 'wZEC-USDC BAO',
 		tokenSymbol: 'ZB',
+		denominatorSymbol: 'USDC',
 		poolType: 'archived',
 		icon: '/zhaziji.png',
 		refUrl:
@@ -2350,10 +2382,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x0391d2021f89dc339f60fff84546ea23e337750f',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 18,
 		name: 'BOND Baobing',
 		symbol: 'BOND-USDC UNIV2',
 		tokenSymbol: 'BOND',
+		denominatorSymbol: 'USDC',
 		icon: '/shaved-ice.png',
 		refUrl: 'https://www.mxc.ai/auth/signup?inviteCode=13z4G',
 	},
@@ -3235,10 +3271,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x4fabb145d64652a948d72533023f6e7a623c7c53',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 18,
 		name: 'BUSD BBQ Pork Bun',
 		symbol: 'BUSD-USDC UNIV2',
 		tokenSymbol: 'BUSD',
+		denominatorSymbol: 'USDC',
 		icon: '/meat-bun.png',
 		refUrl: 'https://coinsbit.io/referral/fdfdc261-0d2c-4681-8878-5915c74af58e',
 	},
@@ -3710,10 +3750,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x853d955acef822db058eb8505911ed77f175b99e',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 18,
 		name: 'FRAX/USDC Fries',
 		symbol: 'FRAX-USDC UNIV2',
 		tokenSymbol: 'FRAX',
+		denominatorSymbol: 'USDC',
 		poolType: 'uni',
 		icon: '/fried-potatoes.png',
 		refUrl:
@@ -3727,10 +3771,14 @@ export const supportedPools = [
 		tokenAddresses: {
 			1: '0x6b175474e89094c44da98b954eedeac495271d0f',
 		},
+		denominatorAddresses: {
+			1: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+		},
 		tokenDecimals: 18,
 		name: 'DAI/USDC Dip',
 		symbol: 'DAI-USDC UNIV2',
 		tokenSymbol: 'DAI',
+		denominatorSymbol: 'USDC',
 		poolType: 'uni',
 		icon: '/gravy.png',
 		refUrl:

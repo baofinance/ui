@@ -35,8 +35,17 @@ export class Contracts {
 			Object.assign(pool, {
 				lpAddress: pool.lpAddresses[networkId],
 				tokenAddress: pool.tokenAddresses[networkId],
+				mainnetDenominatorAddress: pool.denominatorAddresses
+					? pool.denominatorAddresses[1]
+					: null, // null if WETH.
+				denominatorAddress: pool.denominatorAddresses
+					? pool.denominatorAddresses[networkId]
+					: null, // null if WETH.
 				lpContract: new this.web3.eth.Contract(UNIV2PairAbi),
 				tokenContract: new this.web3.eth.Contract(ERC20Abi),
+				denominatorContract: pool.denominatorAddresses
+					? new this.web3.eth.Contract(ERC20Abi)
+					: this.weth,
 			}),
 		)
 
@@ -58,9 +67,19 @@ export class Contracts {
 		setProvider(this.baoPrice, contractAddresses.baoPrice[networkId])
 
 		this.pools.forEach(
-			({ lpContract, lpAddress, tokenContract, tokenAddress }) => {
+			({
+				lpContract,
+				lpAddress,
+				tokenContract,
+				tokenAddress,
+				denominatorContract,
+				denominatorAddress,
+			}) => {
 				setProvider(lpContract, lpAddress)
 				setProvider(tokenContract, tokenAddress)
+				if (denominatorAddress) {
+					setProvider(denominatorContract, denominatorAddress)
+				}
 			},
 		)
 	}

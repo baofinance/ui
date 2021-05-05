@@ -18,17 +18,16 @@ import useFarms from '../../../hooks/useFarms'
 import useBao from '../../../hooks/useBao'
 import { getEarned, getMasterChefContract } from '../../../bao/utils'
 import { bnToDec } from '../../../utils'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import './tab-styles.css';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
+import './tab-styles.css'
 import { PoolType } from '../../../contexts/Farms/types'
-
 
 interface FarmWithStakedValue extends Farm, StakedValue {
 	apy: BigNumber
 }
 
-const cardsPerRow = 3;
+const cardsPerRow = 3
 
 const FarmCards: React.FC = () => {
 	const [farms] = useFarms()
@@ -39,36 +38,34 @@ const FarmCards: React.FC = () => {
 
 	const baoPrice =
 		baoIndex >= 0 && stakedValue[baoIndex]
-			? stakedValue[baoIndex].tokenPriceInWeth
+			? stakedValue[baoIndex].tokenPriceInDenominator // (token price in weth)
 			: new BigNumber(0)
 
 	const BLOCKS_PER_YEAR = new BigNumber(2336000)
 	const BAO_BER_BLOCK = new BigNumber(64000)
 
-	const pools: {[key: string]: FarmWithStakedValue[]} = {
+	const pools: { [key: string]: FarmWithStakedValue[] } = {
 		[PoolType.UNI]: [],
 		[PoolType.SUSHI]: [],
-		[PoolType.ARCHIVED]: []
-	};
+		[PoolType.ARCHIVED]: [],
+	}
 
-	farms.forEach(
-		(farm, i) => {
-			const farmWithStakedValue = {
-				...farm,
-				...stakedValue[i],
-				poolType: farm.poolType || PoolType.UNI,
-				apy: stakedValue[i]
-					? baoPrice
-							.times(BAO_BER_BLOCK)
-							.times(BLOCKS_PER_YEAR)
-							.times(stakedValue[i].poolWeight)
-							.div(stakedValue[i].totalWethValue)
-					: null,
-			};
-
-			pools[farmWithStakedValue.poolType].push(farmWithStakedValue);
+	farms.forEach((farm, i) => {
+		const farmWithStakedValue = {
+			...farm,
+			...stakedValue[i],
+			poolType: farm.poolType || PoolType.UNI,
+			apy: stakedValue[i]
+				? baoPrice
+						.times(BAO_BER_BLOCK)
+						.times(BLOCKS_PER_YEAR)
+						.times(stakedValue[i].poolWeight)
+						.div(stakedValue[i].totalWethValue)
+				: null,
 		}
-	);
+
+		pools[farmWithStakedValue.poolType].push(farmWithStakedValue)
+	})
 
 	return (
 		<Tabs>
@@ -84,14 +81,14 @@ const FarmCards: React.FC = () => {
 						pools[PoolType.UNI].map((farm, i) => (
 							<React.Fragment key={i}>
 								<FarmCard farm={farm} />
-								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
+								{(i + 1) % cardsPerRow !== 0 && <StyledSpacer />}
 							</React.Fragment>
 						))
 					) : (
-							<StyledLoadingWrapper>
-								<Loader text="Cooking the rice ..." />
-							</StyledLoadingWrapper>
-						)}
+						<StyledLoadingWrapper>
+							<Loader text="Cooking the rice ..." />
+						</StyledLoadingWrapper>
+					)}
 				</StyledCards>
 			</TabPanel>
 			<TabPanel>
@@ -100,14 +97,14 @@ const FarmCards: React.FC = () => {
 						pools[PoolType.SUSHI].map((farm, i) => (
 							<React.Fragment key={i}>
 								<FarmCard farm={farm} />
-								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
+								{(i + 1) % cardsPerRow !== 0 && <StyledSpacer />}
 							</React.Fragment>
 						))
 					) : (
-							<StyledLoadingWrapper>
-								<Loader text="Cooking the rice ..." />
-							</StyledLoadingWrapper>
-						)}
+						<StyledLoadingWrapper>
+							<Loader text="Cooking the rice ..." />
+						</StyledLoadingWrapper>
+					)}
 				</StyledCards>
 			</TabPanel>
 			<TabPanel>
@@ -116,18 +113,18 @@ const FarmCards: React.FC = () => {
 						pools[PoolType.ARCHIVED].map((farm, i) => (
 							<React.Fragment key={i}>
 								<FarmCard farm={farm} />
-								{((i + 1) % (cardsPerRow) !== 0) && <StyledSpacer />}
+								{(i + 1) % cardsPerRow !== 0 && <StyledSpacer />}
 							</React.Fragment>
 						))
 					) : (
-							<StyledLoadingWrapper>
-								<Loader text="Cooking the rice ..." />
-							</StyledLoadingWrapper>
-						)}
+						<StyledLoadingWrapper>
+							<Loader text="Cooking the rice ..." />
+						</StyledLoadingWrapper>
+					)}
 				</StyledCards>
 			</TabPanel>
 		</Tabs>
-	);
+	)
 }
 
 interface FarmCardProps {
@@ -212,18 +209,20 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 											.slice(0, -1)}%`
 									: 'Loading ...'}
 							</span>
-							{/* <span>
-                {farm.tokenAmount
-                  ? (farm.tokenAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                {farm.tokenSymbol}
-              </span>
-              <span>
-                {farm.wethAmount
-                  ? (farm.wethAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                ETH
-              </span> */}
+							{/* <span>{farm.tokenSymbol}</span>
+							<span>
+								{farm.tokenAmount
+									? (farm.tokenAmount.toNumber() || 0).toLocaleString()
+									: '-'}
+							</span>
+							<span>{farm.denominatorSymbol || 'ETH'}</span>
+							<span>
+								{farm.denominatorWethEquivalent
+									? (
+											farm.denominatorWethEquivalent.toNumber() || 0
+									  ).toLocaleString()
+									: '-'}{' '}
+							</span> */}
 						</StyledInsight>
 					</StyledContent>
 				</CardContent>
@@ -233,7 +232,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
 }
 
 const RainbowLight = keyframes`
-  
+
 	0% {
 		background-position: 0% 50%;
 	}
@@ -338,7 +337,6 @@ const StyledInsight = styled.div`
 	line-height: 32px;
 	font-size: 13px;
 	border: 1px solid #e6dcd5;
-	text-align: center;
 	padding: 0 12px;
 `
 
